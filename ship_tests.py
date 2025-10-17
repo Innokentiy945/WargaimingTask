@@ -1,4 +1,4 @@
-def test_option_a(ship, ship_component, original_value, temp_current_value):
+def test_option_a(ship, ship_component, original_value, current_value):
     weapons_allowed = []
     for i in range(1, 21):
         weapons_allowed.append(f"Weapon-{i}")
@@ -11,11 +11,11 @@ def test_option_a(ship, ship_component, original_value, temp_current_value):
     for i in range(1, 7):
         engines_allowed.append(f"Engine-{i}")
 
-    if original_value == temp_current_value:
+    if original_value == current_value:
         assert False, (
             f"{ship} {ship_component} value did not change.\n"
             f"Expected:\n  {original_value}\n"
-            f"But was:\n  {temp_current_value}"
+            f"But was:\n  {current_value}"
         )
 
     allowed = None
@@ -26,20 +26,20 @@ def test_option_a(ship, ship_component, original_value, temp_current_value):
     elif ship_component == "engine":
         allowed = engines_allowed
 
-    if original_value == temp_current_value:
+    if original_value == current_value:
         assert False, (
             f"{ship}, {ship_component} was not changed\n"
-            f"expected: {original_value}, was: {temp_current_value}"
+            f"expected: {original_value}, was: {current_value}"
         )
 
-    if allowed is not None and temp_current_value not in allowed:
+    if allowed is not None and current_value not in allowed:
         assert False, (
             f"{ship}, {ship_component} changed to invalid value\n"
             f"expected one of: {allowed}\n"
-            f"but was: {temp_current_value}"
+            f"but was: {current_value}"
         )
 
     print(
         f"{ship}, {ship_component} changed\n"
-        f"expected: {original_value}, was: {temp_current_value}"
+        f"expected: {original_value}, was: {current_value}"
     )
