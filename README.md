@@ -26,3 +26,7 @@ B. The test should fall with assert:
   B.1 When the value of a component parameter does not match its pre-randomizer. 
   B.2 When the gun, hull, or engine is changed. 
 Output both the previous and current content.
+
+Troubleshooting:
+1) cd taskDirectory then python -m venv .venv
+2) Import pytest to your local project
